@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="et_username" type="id" />
+    <item name="et_password" type="id" />
+    <item name="btn_login" type="id" />
+    <item name="btn_loginS" type="id" />
+    <item name="tv_forgot_password" type="id" />
+    <item name="tv_register" type="id" />
+    <item name="tv_back_to_login" type="id" />
+    <item name="btn_register" type="id" />
+    <item name="tv_login" type="id" />
+    <item name="rbtn_register" type="id" />
+</resources>
