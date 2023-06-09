@@ -1,11 +1,11 @@
-package com.example.myapplication.views;
+package com.example.appepicnovels.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
-import com.example.myapplication.R;
+import com.example.appepicnovels.R;
 
 public class ExploreView extends Fragment {
     public ExploreView() {

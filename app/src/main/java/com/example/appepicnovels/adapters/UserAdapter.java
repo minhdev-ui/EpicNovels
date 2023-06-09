@@ -1,7 +1,7 @@
-package com.example.myapplication.adapters;
+package com.example.appepicnovels.adapters;
 
-import com.example.myapplication.LoginActivity;
-import com.example.myapplication.models.User;
+import com.example.appepicnovels.LoginActivity;
+import com.example.appepicnovels.models.User;
 
 public class UserAdapter {
     private static LoginActivity loginActivity; // Thêm biến static LoginActivity

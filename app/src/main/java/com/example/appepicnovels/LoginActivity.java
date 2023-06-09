@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.appepicnovels;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.adapters.UserAdapter;
-import com.example.myapplication.models.User;
+import com.example.appepicnovels.adapters.UserAdapter;
+import com.example.appepicnovels.models.User;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,6 +21,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView tvForgotPassword;
     private  TextView  tvRegister;
+
+    private void loginUser() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

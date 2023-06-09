@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -7,12 +8,12 @@ android {
     buildToolsVersion "33.0.2"
 
     defaultConfig {
-        applicationId "com.example.myapplication"
+        applicationId "com.example.appepicnovels"
         minSdkVersion 16
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,7 +33,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -41,4 +41,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.google.firebase:firebase-firestore:23.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation files('libs/jBCrypt-0.4.1.jar')
 }
+

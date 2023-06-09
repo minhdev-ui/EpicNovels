@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "916213671170",
+    "project_id": "divine-actor-344704",
+    "storage_bucket": "divine-actor-344704.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916213671170:android:3bcf538b2ba50e9cf08e1b",
+        "android_client_info": {
+          "package_name": "com.example.appepicnovels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916213671170-boq9qc23cef9ukebf837h1ncu8umfgjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa1ULs_6hKKm8Gx1Uph7_EJqRvtbpamsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916213671170-boq9qc23cef9ukebf837h1ncu8umfgjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

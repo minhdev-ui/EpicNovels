@@ -1,13 +1,11 @@
-package com.example.myapplication.adapters;
+package com.example.appepicnovels.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.myapplication.views.ExploreView;
-import com.example.myapplication.views.RecommendView;
+import com.example.appepicnovels.views.ExploreView;
+import com.example.appepicnovels.views.RecommendView;
 
 public class TabPaperAdapter extends FragmentStateAdapter {
     public TabPaperAdapter(@NonNull FragmentActivity fm) {

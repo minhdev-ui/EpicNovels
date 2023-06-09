@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.appepicnovels">
 
     <application
         android:allowBackup="true"
@@ -10,20 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.appepicnovels.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.example.appepicnovels.ForgotPasswordActivity"
             android:exported="false"
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.appepicnovels.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.appepicnovels.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication">

@@ -1,4 +1,4 @@
-package com.example.myapplication.models;
+package com.example.appepicnovels.models;
 
 public class User {
     private String username;

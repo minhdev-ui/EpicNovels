@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.appepicnovels;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

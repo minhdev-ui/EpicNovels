@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.appepicnovels;
 
 import org.junit.Test;
 
