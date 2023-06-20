@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splash_layout.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/splash_view"
+                android:background="#fff">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="EpicNovels"
+            android:textColor="#039BE5"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:layout_marginBottom="26dp" android:layout_above="@+id/logo_image"/>
+    <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_app_logo"
+            android:layout_centerInParent="true" />
+
+    <Button
+            android:text="Login"
+            android:id="@+id/login_button"
+            android:layout_width="133dp"
+            android:layout_height="71dp"
+            android:background="#039BE5"
+            android:textSize="20sp"
+            android:layout_marginBottom="-335dp"
+            android:layout_marginTop="65dp"
+            android:layout_below="@+id/logo_image"
+            android:layout_marginLeft="-61dp" android:layout_marginStart="-61dp"
+            android:layout_alignLeft="@+id/logo_image" android:layout_alignStart="@+id/logo_image"/>
+
+    <Button
+            android:text="Sign up"
+            android:id="@+id/signIn_button"
+            android:layout_width="133dp"
+            android:layout_height="71dp"
+            android:background="#039BE5"
+            android:textSize="20sp"
+            android:layout_toEndOf="@+id/login_button" android:layout_toRightOf="@+id/login_button"
+            android:layout_marginLeft="54dp"
+            android:layout_marginStart="54dp" android:layout_marginTop="63dp" android:layout_below="@+id/logo_image"/>
+
+
+    <!-- Add any additional views or animations here -->
+
+</RelativeLayout>

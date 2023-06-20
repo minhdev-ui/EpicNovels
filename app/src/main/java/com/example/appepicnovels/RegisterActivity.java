@@ -30,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isRadioButtonChecked = false;
 
+    private LinearLayout loadingOverlay;
+
     private void registerUser() {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -41,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                loadingOverlay.setVisibility(View.VISIBLE);
                 if(task.isSuccessful()) {
                     if(task.getResult() != null && !task.getResult().isEmpty()) {
                         Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
@@ -52,17 +55,20 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
                                 if(task.isComplete()) {
+                                    loadingOverlay.setVisibility(View.GONE);
                                     Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thành công!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
+                                    loadingOverlay.setVisibility(View.GONE);
                                     Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thất bại!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                     }
                 } else {
+                    loadingOverlay.setVisibility(View.GONE);
                     Toast.makeText(RegisterActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -81,6 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_register);
         tvLogin = findViewById(R.id.tv_login);
         rbtnRegister = findViewById(R.id.rbtn_register);
+        loadingOverlay = findViewById(R.id.loadingLayout);
+        loadingOverlay.setVisibility(View.GONE);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
