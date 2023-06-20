@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/includedLayout"
+        layout="@layout/default_layout" />
+
+    <!-- Tiêu đề "EpicNovels đề cử" -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowSpan="2"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="10dp"
+
+        android:layout_marginBottom="10dp"
+        android:text="EpicNovels đề cử"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_scrollEffect="none" />
+
+    <!-- Các thành phần khác của trang DiscoverActivity -->
+
+</merge>
+
+

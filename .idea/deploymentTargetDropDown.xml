@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< Updated upstream
     <component name="deploymentTargetDropDown">
         <targetSelectedWithDropDown>
             <Target>
@@ -15,3 +16,20 @@
         <timeTargetWasSelectedWithDropDown value="2023-06-18T13:46:55.454823900Z" />
     </component>
 </project>
+=======
+  <component name="deploymentTargetDropDown">
+    <runningDeviceTargetSelectedWithDropDown>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="SERIAL_NUMBER" />
+            <value value="9e9e0731" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </runningDeviceTargetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2023-06-18T15:25:13.517859400Z" />
+  </component>
+</project>
+>>>>>>> Stashed changes
