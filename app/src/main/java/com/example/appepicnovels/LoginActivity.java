@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     String hashedPassword = documentSnapshot.getString("password");
 
                     if (BCrypt.checkpw(password, hashedPassword)) {
-                        User user = new User(username, hashedPassword);
+                        User user = new User(username, hashedPassword, null);
                         // Gọi phương thức thành công đăng nhập từ View
                         if (LoginActivity.this != null) {
                             LoginActivity.this.onLoginSuccess(user);

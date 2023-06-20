@@ -15,17 +15,14 @@
         <activity
             android:name="com.example.appepicnovels.RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_register"
             android:theme="@style/Theme.MyApplication" />
         <activity
                 android:name="com.example.appepicnovels.LoginActivity"
                 android:exported="false"
-                android:label="LoginActivity"
                 android:theme="@style/Theme.MyApplication" />
         <activity
             android:name="com.example.appepicnovels.ForgotPasswordActivity"
             android:exported="false"
-            android:label="@string/title_activity_forgot_password"
             android:theme="@style/Theme.MyApplication" />
         <activity
             android:name="com.example.appepicnovels.MainActivity"
@@ -41,5 +38,6 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

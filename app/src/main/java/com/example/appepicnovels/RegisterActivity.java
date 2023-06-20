@@ -23,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUsername;
     private EditText etPassword;
+    private EditText etEmail;
     private EditText etConfirmPassword;
     private Button btnRegister;
     private TextView tvLogin;
@@ -35,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser() {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-//        String email = etEmail.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference usersCollection = db.collection("Users");
         Query query = usersCollection.whereEqualTo("username", username);
@@ -50,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                         return;
                     } else {
                         String hashPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
-                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword));
+                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email));
                         insertQuery.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
@@ -83,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
+        etEmail = findViewById(R.id.et_email);
         etConfirmPassword = findViewById(R.id.et_confirmpassword);
         btnRegister = findViewById(R.id.btn_register);
         tvLogin = findViewById(R.id.tv_login);
