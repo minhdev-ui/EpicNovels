@@ -6,24 +6,26 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.FirebaseApp;
 
-public class MainActivity extends AppCompatActivity {
+public class DiscoverActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommended_posts);
+        setContentView(R.layout.activity_discover);
 
         TextView danhChoBanTextView = findViewById(R.id.danhChoBanTextView);
         danhChoBanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Xử lý khi ấn vào "dành cho bạn"
-                Intent intent = new Intent(MainActivity.this, RecommendedPostsActivity.class);
+                // Navigate back to RecommendedPostsActivity
+                Intent intent = new Intent(DiscoverActivity.this, RecommendedPostsActivity.class);
                 startActivity(intent);
+                finish(); // Optionally, you can finish DiscoverActivity if needed
             }
         });
-    }
 
+        // Other code for DiscoverActivity
+        // ...
+    }
 }

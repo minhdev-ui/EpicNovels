@@ -9,6 +9,19 @@
         android:roundIcon="@drawable/hi"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <!-- Khai báo DefaultActivity -->
+        <activity
+            android:name="com.example.appepicnovels.DefaultActivity"
+            android:exported="false"
+            android:label="Default Activity" />
+        <activity
+            android:name="com.example.appepicnovels.RecommendedPostsActivity"
+            android:label="Recommended Posts" />
+        <activity
+            android:name="com.example.appepicnovels.DiscoverActivity"
+            android:label="Recommended Posts" />
+
         <activity
             android:name=".InformationActivity"
             android:exported="false" />
@@ -27,6 +40,8 @@
         <activity
             android:name="com.example.appepicnovels.MainActivity"
             android:exported="false" />
+
+
         <activity
             android:name="com.example.appepicnovels.SplashActivity"
             android:exported="true"

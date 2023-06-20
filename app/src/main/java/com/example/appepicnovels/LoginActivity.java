@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(User user) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, RecommendedPostsActivity.class);
         startActivity(intent);
         // Kết thúc LoginActivity
         finish();
