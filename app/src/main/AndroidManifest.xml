@@ -10,10 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".InformationActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.appepicnovels.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.MyApplication" />
+        <activity
+                android:name="com.example.appepicnovels.LoginActivity"
+                android:exported="false"
+                android:label="LoginActivity"
+                android:theme="@style/Theme.MyApplication" />
         <activity
             android:name="com.example.appepicnovels.ForgotPasswordActivity"
             android:exported="false"
@@ -23,7 +31,7 @@
             android:name="com.example.appepicnovels.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.appepicnovels.LoginActivity"
+            android:name="com.example.appepicnovels.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication">
