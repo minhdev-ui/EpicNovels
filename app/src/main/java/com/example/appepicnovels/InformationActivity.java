@@ -40,7 +40,7 @@ public class InformationActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InformationActivity.this, MainActivity.class);
+                Intent intent = new Intent(InformationActivity.this, ManagenActivity.class);
                 startActivity(intent);
                 finish();
             }

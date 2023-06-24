@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +43,18 @@ public class RecommendedPostsActivity extends AppCompatActivity {
                 Intent intent = new Intent(RecommendedPostsActivity.this, DiscoverActivity.class);
                 startActivity(intent);
             }
+
         });
+
+        View accountIcon = findViewById(R.id.accountIcon);
+        accountIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecommendedPostsActivity.this, ManagenActivity.class);
+                startActivity(intent);
+            }
+        });
+
         recommendedPostsRecyclerView = findViewById(R.id.recommendedPostsRecyclerView);
         recommendedPostsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

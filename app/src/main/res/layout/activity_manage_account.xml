@@ -1,0 +1,347 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="648dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="-3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewInfor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnInfor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#039BE5"
+                    android:drawableStart="@drawable/ic_profile_picture"
+                    android:drawableLeft="@drawable/ic_profile_picture"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Username"
+                    android:textAllCaps="false"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@drawable/haha"
+                    app:iconPadding="19dp"
+                    app:iconSize="30dp"
+                    app:iconTint="#040303"
+                    app:iconTintMode="add" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewChannelFollow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp"
+                tools:ignore="DuplicateIds">
+
+                <Button
+                    android:id="@+id/btnChannelFollow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Followed Channels"
+                    android:textAllCaps="false"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSavedContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp"
+                tools:ignore="DuplicateIds">
+
+                <Button
+                    android:id="@+id/btnSavedContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Saved Content"
+                    android:textAllCaps="false"
+                    android:textColor="#0B0A0A"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Your History"
+                    android:textAllCaps="false"
+                    android:textColor="#0B0A0A"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGeneralSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnGeneralSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Settings"
+                    android:textAllCaps="false"
+                    android:textColor="#050505"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/ic_menu_manage"
+                    app:iconTint="#020202" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewBlockedChannels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnBlockedChannels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Blocked Channels"
+                    android:textAllCaps="false"
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/presence_offline"
+                    app:iconTint="#00000000"
+                    app:iconTintMode="add" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Version                                   15.0.0"
+                    android:textAllCaps="false"
+                    android:textColor="#0B0A0A"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/ic_dialog_info"
+                    app:iconTint="#0C0C0C" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Contact       EpicNovels@gmail.com"
+                    android:textAllCaps="false"
+                    android:textColor="#0E0E0E"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/stat_sys_phone_call"
+                    app:iconTint="#001C1C1C"
+                    app:iconTintMode="add" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewDeleteAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnDeleteAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Delete Account"
+                    android:textAllCaps="false"
+                    android:textColor="#050505"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/ic_menu_delete"
+                    app:iconTint="#050505" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#039BE5"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical|start"
+                    android:padding="16dp"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textColor="#020202"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#D4D7DA"
+                    app:icon="@android:drawable/ic_menu_revert"
+                    app:iconTint="#191818" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#039BE5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Managen Account"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <!-- Thanh menu ngang ở dưới đáy màn hình -->
+
+    <LinearLayout
+        android:id="@+id/bottomMenuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/homeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Home"
+            android:padding="15dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:contentDescription="Thông báo"
+            android:padding="15dp"
+            android:src="@drawable/ic_notification" />
+
+        <ImageView
+            android:id="@+id/accountIcon"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:contentDescription="Quản lý tài khoản"
+            android:padding="15dp"
+            android:src="@drawable/ic_account" />
+
+    </LinearLayout>
+</RelativeLayout>

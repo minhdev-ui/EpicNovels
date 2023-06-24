@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appepicnovels">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,50 +10,51 @@
         android:roundIcon="@drawable/hi"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".ManagenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_manage_account"
+            android:theme="@style/Theme.MyApplication" />
         <!-- Khai báo DefaultActivity -->
         <activity
-            android:name="com.example.appepicnovels.DefaultActivity"
+            android:name=".DefaultActivity"
             android:exported="false"
             android:label="Default Activity" />
         <activity
-            android:name="com.example.appepicnovels.RecommendedPostsActivity"
+            android:name=".RecommendedPostsActivity"
             android:label="Recommended Posts" />
         <activity
-            android:name="com.example.appepicnovels.DiscoverActivity"
+            android:name=".DiscoverActivity"
             android:label="Recommended Posts" />
-
         <activity
             android:name=".InformationActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.appepicnovels.RegisterActivity"
+            android:name=".RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.MyApplication" />
         <activity
-                android:name="com.example.appepicnovels.LoginActivity"
-                android:exported="false"
-                android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name="com.example.appepicnovels.ForgotPasswordActivity"
+            android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name="com.example.appepicnovels.MainActivity"
+            android:name=".ForgotPasswordActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
-
-
         <activity
-            android:name="com.example.appepicnovels.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
