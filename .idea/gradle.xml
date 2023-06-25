@@ -6,7 +6,11 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< Updated upstream
         <option name="gradleJvm" value="corretto-11" />
+=======
+        <option name="gradleHome" value="$PROJECT_DIR$/../gradle-8.0-bin/gradle-8.0" />
+>>>>>>> Stashed changes
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />

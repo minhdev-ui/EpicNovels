@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:id="@+id/imgStory"
+            android:src="@drawable/a"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <TextView
+            android:id="@+id/nameChap"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:background="#A8000000"
+            android:gravity="center"
+            android:text="Truyện ngôn tình"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/nameStory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Em yêu anh"
+        android:textColor="#000"
+        android:textSize="14dp" />
+</LinearLayout>

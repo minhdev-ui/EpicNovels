@@ -148,7 +148,7 @@ public class ManagenActivity extends AppCompatActivity {
         homeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManagenActivity.this, RecommendedPostsActivity.class);
+                Intent intent = new Intent(ManagenActivity.this, DefaultActivity.class);
                 startActivity(intent);
             }
         });

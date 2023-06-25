@@ -70,14 +70,12 @@
             android:textColor="@android:color/black" />
 
     </LinearLayout>
-
     <!-- Nội dung chính -->
 
     <View
         android:id="@+id/underlineView"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/optionsLayout"
         android:background="@color/bright_blue" />
 
     <!-- Thanh menu ngang ở dưới đáy màn hình -->
@@ -115,5 +113,6 @@
             android:src="@drawable/ic_account" />
 
     </LinearLayout>
+
 
 </RelativeLayout>
