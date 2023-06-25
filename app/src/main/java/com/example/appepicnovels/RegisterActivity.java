@@ -1,20 +1,17 @@
 package com.example.appepicnovels;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.*;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appepicnovels.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.*;
 import org.jetbrains.annotations.NotNull;
 import org.mindrot.jbcrypt.BCrypt;
@@ -39,31 +36,45 @@ public class RegisterActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference usersCollection = db.collection("Users");
-        Query query = usersCollection.whereEqualTo("username", username);
+        Query usernameQuery = usersCollection.whereEqualTo("username", username);
+        Query emailQuery = usersCollection.whereEqualTo("email", email);
 
-        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        usernameQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                 loadingOverlay.setVisibility(View.VISIBLE);
-                if(task.isSuccessful()) {
-                    if(task.getResult() != null && !task.getResult().isEmpty()) {
+                if (task.isSuccessful()) {
+                    if (task.getResult() != null && !task.getResult().isEmpty()) {
                         Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
-                        String hashPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
-                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email));
-                        insertQuery.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        emailQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
-                            public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
-                                if(task.isComplete()) {
-                                    loadingOverlay.setVisibility(View.GONE);
-                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    loadingOverlay.setVisibility(View.GONE);
-                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thất bại!", Toast.LENGTH_SHORT).show();
+                            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> emailTask) {
+                                if (emailTask.isComplete()) {
+                                    QuerySnapshot emailSnapshot = emailTask.getResult();
+                                    if (emailSnapshot != null && !emailSnapshot.isEmpty()) {
+                                        Toast.makeText(RegisterActivity.this, "Email đã tồn tại!", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else {
+                                        String hashPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+                                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email));
+                                        insertQuery.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                            @Override
+                                            public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
+                                                if (task.isComplete()) {
+                                                    loadingOverlay.setVisibility(View.GONE);
+                                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                } else {
+                                                    loadingOverlay.setVisibility(View.GONE);
+                                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thất bại!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
                                 }
                             }
                         });
@@ -97,8 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     FirebaseApp.initializeApp(RegisterActivity.this);
-                    if(rbtnRegister.isChecked()) {
-                        if(etConfirmPassword.equals(etPassword)) {
+                    if (rbtnRegister.isChecked()) {
+                        if (etConfirmPassword.equals(etPassword)) {
                             Toast.makeText(RegisterActivity.this, "Not match password", Toast.LENGTH_SHORT).show();
                             return;
                         }

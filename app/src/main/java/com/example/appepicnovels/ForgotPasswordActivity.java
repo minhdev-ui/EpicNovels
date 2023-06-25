@@ -6,23 +6,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appepicnovels.Firebase.FirebaseStore;
-import com.example.appepicnovels.adapters.MailAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.*;
 import org.jetbrains.annotations.NotNull;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private TextView tvBackToLogin;
     private Button btn_reset_password;
     private EditText et_email;
+    private EditText et_newPassword;
     private View view;
 
     @Override
@@ -32,6 +32,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         tvBackToLogin = findViewById(R.id.tv_back_to_login);
         et_email = findViewById(R.id.et_email);
+        et_newPassword = findViewById(R.id.et_newPassword);
         btn_reset_password = findViewById(R.id.btn_reset_password);
 
         tvBackToLogin.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +53,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()) {
-                            Intent intent = MailAdapter.sendMail(view, et_email.getText().toString());
-                            if(intent.resolveActivity(getPackageManager()) != null) {
-                                startActivity(intent);
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                            DocumentReference documentReference = user.document(documentSnapshot.getId());
+                            try {
+                                documentReference.update(
+                                        "password", BCrypt.hashpw(et_newPassword.getText().toString(), BCrypt.gensalt(10))
+                                );
+                                Toast.makeText(ForgotPasswordActivity.this, "Password has changed", Toast.LENGTH_SHORT).show();
+                            } catch (Exception e){
+                                Toast.makeText(ForgotPasswordActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(ForgotPasswordActivity.this, "Email chưa được đăng ký", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ForgotPasswordActivity.this, "Email not existed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
