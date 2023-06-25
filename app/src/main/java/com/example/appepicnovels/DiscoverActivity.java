@@ -1,6 +1,8 @@
 package com.example.appepicnovels;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.GridView;
 
@@ -15,6 +17,7 @@ public class DiscoverActivity extends AppCompatActivity {
 GridView grvListStory;
 DiscoverAdapter adapter;
 ArrayList<Story> DiscoverArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,16 @@ ArrayList<Story> DiscoverArrayList;
         reference();
         setUp();
         setClick();
+
+        View account = findViewById(R.id.accountIcon);
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DiscoverActivity.this, ManagenActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     private void init(){
         DiscoverArrayList = new ArrayList<>();
