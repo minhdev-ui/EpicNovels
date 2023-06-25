@@ -6,10 +6,17 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.GridView;
 
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appepicnovels.adapters.DiscoverAdapter;
+import com.example.appepicnovels.interfaces.StoriesCallback;
 import com.example.appepicnovels.models.Story;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -23,35 +30,43 @@ ArrayList<Story> DiscoverArrayList;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover);
         init();
-        reference();
-        setUp();
         setClick();
+    }
 
-        View account = findViewById(R.id.accountIcon);
-        account.setOnClickListener(new View.OnClickListener() {
+    public void getAllStories(final StoriesCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference usersCollection = db.collection("Stories");
+        Task<QuerySnapshot> query = usersCollection.get();
+        ArrayList<Story> storyArrayList = new ArrayList<>();
+        query.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DiscoverActivity.this, ManagenActivity.class);
-                startActivity(intent);
-                finish();
+            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                        storyArrayList.add(new Story(documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img")));
+                    }
+                    callback.onStoriesLoad(storyArrayList);
+                } else {
+                    Toast.makeText(DiscoverActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    };
+
+    private void init(){
+        DiscoverArrayList = new ArrayList<>();
+        grvListStory = findViewById(R.id.grvListStory);
+        getAllStories(new StoriesCallback() {
+            @Override
+            public void onStoriesLoad(ArrayList<Story> stories) {
+                for (Story story : stories) {
+                    DiscoverArrayList.add(new Story(story.getName(), story.getChap(), story.getLinkImg()));
+                }
+                adapter = new DiscoverAdapter(DiscoverActivity.this, 0, DiscoverArrayList);
+                grvListStory.setAdapter(adapter);
             }
         });
     }
-    private void init(){
-        DiscoverArrayList = new ArrayList<>();
-        DiscoverArrayList.add(new Story("Danh môn chi ái", "Chap01", "https://st.nettruyenio.com/data/comics/251/danh-mon-chi-ai.jpg"));
-        DiscoverArrayList.add(new Story("BA CHỊ EM NHÀ MIKADONO DỄ ĐỐI PHÓ THẬT ĐẤY", "Chap01", "https://st.nettruyenio.com/data/comics/169/ba-chi-em-nha-mikadono-de-doi-pho-that-d-2969.jpg"));
-        DiscoverArrayList.add(new Story("VÕ LUYỆN ĐỈNH PHONG", "Chap01", "https://st.nettruyenio.com/data/comics/32/vo-luyen-dinh-phong.jpg"));
-        DiscoverArrayList.add(new Story("Đích nữ vi mưu", "Chap01", "https://st.nettruyenio.com/data/comics/143/dich-nu-vi-muu.jpg"));
 
-        adapter = new DiscoverAdapter(this ,0,DiscoverArrayList );
-
-    }
-    private void reference(){
-        grvListStory = findViewById(R.id.grvListStory);
-    }
-    private void setUp(){
-        grvListStory.setAdapter(adapter);
-    };
     private void setClick(){};
 }

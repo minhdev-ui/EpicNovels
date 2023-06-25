@@ -44,19 +44,21 @@ public class LoginActivity extends AppCompatActivity {
                     String hashedPassword = documentSnapshot.getString("password");
 
                     if (BCrypt.checkpw(password, hashedPassword)) {
-                        User user = new User(username, hashedPassword, null);
+                        User user = new User(username, hashedPassword, null, documentSnapshot.get("role").toString());
                         // Gọi phương thức thành công đăng nhập từ View
                         if (LoginActivity.this != null) {
+                            Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                             LoginActivity.this.onLoginSuccess(user);
                         }
                     } else {
                         // Gọi phương thức thất bại đăng nhập từ View
                         if (LoginActivity.this != null) {
+                            Toast.makeText(LoginActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                             LoginActivity.this.onLoginFailure();
                         }
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Login Fail! Please Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -111,12 +113,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(User user) {
-        Intent intent = new Intent(this, DefaultActivity.class);
+        Intent intent;
+        if(user.getRole().equals("USER")) {
+            intent = new Intent(this, DefaultActivity.class);
+        } else {
+            intent = new Intent(this, AdminActivity.class);
+        }
         startActivity(intent);
-        // Kết thúc LoginActivity
         finish();
     }
     public void onLoginFailure() {
-        Toast.makeText(this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+
     }
 }

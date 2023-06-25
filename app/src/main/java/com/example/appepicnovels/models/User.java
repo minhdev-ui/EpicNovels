@@ -4,6 +4,15 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getEmail() {
         return email;
@@ -13,10 +22,11 @@ public class User {
         this.email = email;
     }
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, String role) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     // Getters và setters

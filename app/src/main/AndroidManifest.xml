@@ -23,10 +23,7 @@
             android:label="Default Activity" />
 
         <activity
-            android:name=".DiscoverActivity"
-            android:exported="false"
-            android:label="Discover Activity"
-            tools:ignore="Instantiatable" />
+            android:name=".DiscoverActivity"/>
 
         <activity
             android:name=".InformationActivity"
