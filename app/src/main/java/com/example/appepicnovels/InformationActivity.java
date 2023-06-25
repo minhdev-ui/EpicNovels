@@ -33,11 +33,11 @@ public class InformationActivity extends AppCompatActivity {
         tabHost.addTab(tab2);
 
         Toolbar toolbar = findViewById(R.id.materialToolbar);
-        setSupportActionBar(toolbar);
+
 
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_revert); // Đặt icon mũi tên quay về
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(InformationActivity.this, ManagenActivity.class);
