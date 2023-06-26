@@ -54,23 +54,23 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (emailTask.isComplete()) {
                                     QuerySnapshot emailSnapshot = emailTask.getResult();
                                     if (emailSnapshot != null && !emailSnapshot.isEmpty()) {
-                                        Toast.makeText(RegisterActivity.this, "Email đã tồn tại!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Email is already sign up!", Toast.LENGTH_SHORT).show();
                                         return;
                                     } else {
                                         String hashPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
-                                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email));
+                                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email, "USER"));
                                         insertQuery.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
                                                 if (task.isComplete()) {
                                                     loadingOverlay.setVisibility(View.GONE);
-                                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "Account sign up successful!", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                     finish();
                                                 } else {
                                                     loadingOverlay.setVisibility(View.GONE);
-                                                    Toast.makeText(RegisterActivity.this, "Tài khoản đăng ký thất bại!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "Server Error!", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });

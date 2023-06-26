@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+>
 
     <!-- Thanh tìm kiếm -->
     <LinearLayout
@@ -34,86 +35,79 @@
     </LinearLayout>
 
     <!-- Hàng sự lựa chọn -->
-    <LinearLayout
-        android:id="@+id/optionsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/searchLayout"
-        android:orientation="horizontal"
-        android:padding="8dp">
+    <TabHost
+            android:id="@+id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_marginTop="0dp"
+            android:layout_below="@+id/searchLayout" android:layout_marginBottom="-530dp"
+            android:layout_alignBottom="@+id/searchLayout">
 
-        <TextView
-            android:id="@+id/danhChoBanTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Dành cho bạn"
-            android:gravity="center"
-            android:textColor="@android:color/black" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/discoverTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Khám phá"
-            android:gravity="center"
-            android:textColor="@android:color/black" />
+            <!-- Tab widget to select the tab -->
+            <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/articlesTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Bài viết"
-            android:gravity="center"
-            android:textColor="@android:color/black" />
+            <!-- FrameLayout which contains the data of the activity -->
+            <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    </LinearLayout>
+                <!-- for tab 1 -->
+                <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
+                    <!-- Text View for applying the text to the tab -->
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coming Soon"
+                            android:textColor="#000"
+                            android:layout_gravity="center"
+                            android:textSize="24sp"/>
+                </LinearLayout>
+
+
+                <!-- for tab 3 -->
+                <LinearLayout
+                        android:id="@+id/tab3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <!-- Text View for applying the text to the tab -->
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coming Soon"
+                            android:textColor="#000"
+                            android:layout_gravity="center"
+                            android:textSize="24sp"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
     <!-- Nội dung chính -->
 
-    <View
-        android:id="@+id/underlineView"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/optionsLayout"
-        android:background="@color/bright_blue" />
-
     <!-- Thanh menu ngang ở dưới đáy màn hình -->
-    <LinearLayout
-        android:id="@+id/bottomMenuLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+<!--    <View-->
+<!--        android:id="@+id/underlineView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="2dp"-->
+<!--        android:layout_alignBottom="@+id/optionsLayout"-->
+<!--        android:layout_marginBottom="0dp"-->
+<!--        android:background="@color/bright_blue" />-->
 
-        <ImageView
-            android:id="@+id/homeIcon"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Home"
-            android:padding="15dp"
-            android:src="@drawable/ic_home" />
+    <include layout="@layout/bottom_menu" android:id="@+id/bottomMenuLayout"/>
 
-        <ImageView
-            android:id="@+id/notificationIcon"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:contentDescription="Thông báo"
-            android:padding="15dp"
-            android:src="@drawable/ic_notification" />
-
-        <ImageView
-            android:id="@+id/accountIcon"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:contentDescription="Quản lý tài khoản"
-            android:padding="15dp"
-            android:src="@drawable/ic_account" />
-
-    </LinearLayout>
 
 </RelativeLayout>

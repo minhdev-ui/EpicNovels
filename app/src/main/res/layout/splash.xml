@@ -26,35 +26,39 @@
             android:layout_centerInParent="true" />
 
     <Button
-        android:id="@+id/login_button"
-        android:layout_width="133dp"
-        android:layout_height="71dp"
-        android:layout_below="@+id/logo_image"
-        android:layout_alignStart="@+id/logo_image"
-        android:layout_alignLeft="@+id/logo_image"
-        android:layout_marginStart="-61dp"
-        android:layout_marginLeft="-61dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="-335dp"
-        android:background="#039BE5"
-        android:text="Login"
-        android:textSize="20sp"
-        app:backgroundTint="#039BE5" />
-
+            android:id="@+id/login_button"
+            android:layout_width="233dp"
+            android:layout_height="71dp"
+            android:layout_below="@+id/logo_image"
+            android:layout_alignStart="@+id/logo_image"
+            android:layout_alignLeft="@+id/logo_image"
+            android:layout_marginStart="-14dp"
+            android:layout_marginLeft="-14dp"
+            android:layout_marginTop="19dp"
+            android:bottomRightRadius="10dp"
+            android:bottomLeftRadius="10dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:layout_marginBottom="-335dp"
+            android:background="#039BE5"
+            android:text="Login"
+            android:textSize="20sp"
+            app:backgroundTint="#039BE5"/>
     <Button
-        android:id="@+id/signIn_button"
-        android:layout_width="133dp"
-        android:layout_height="71dp"
-        android:layout_below="@+id/logo_image"
-        android:layout_marginStart="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginTop="63dp"
-        android:layout_toEndOf="@+id/login_button"
-        android:layout_toRightOf="@+id/login_button"
-        android:background="#039BE5"
-        android:text="Sign up"
-        android:textSize="20sp"
-        app:backgroundTint="#039BE5" />
+            android:id="@+id/signIn_button"
+            android:layout_width="233dp"
+            android:layout_height="71dp"
+            android:layout_below="@+id/logo_image"
+            android:layout_marginTop="120dp"
+            android:background="#039BE5"
+            android:text="Sign up"
+            android:textSize="20sp"
+            android:bottomRightRadius="10dp"
+            android:bottomLeftRadius="10dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            app:backgroundTint="#039BE5" android:layout_marginLeft="0dp" android:layout_marginStart="0dp"
+            android:layout_alignLeft="@+id/login_button" android:layout_alignStart="@+id/login_button"/>
 
 
     <!-- Add any additional views or animations here -->
