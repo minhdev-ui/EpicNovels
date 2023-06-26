@@ -45,5 +45,16 @@ public class InformationActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        View bnt_post = findViewById(R.id.bnt_post);
+
+        bnt_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InformationActivity.this, PostActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
