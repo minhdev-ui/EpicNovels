@@ -5,7 +5,7 @@
 >
 
     <!-- Thanh tìm kiếm -->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,34 +13,38 @@
         android:padding="8dp">
 
         <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:hint="Nhập tên nội dung, kênh..."
-            android:inputType="text" />
-
+                android:id="@+id/searchEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Nhập tên nội dung, kênh..."
+                android:gravity="center"
+                android:inputType="text" android:layout_toStartOf="@+id/searchButton" android:layout_marginRight="83dp"
+                android:layout_marginEnd="83dp" android:layout_toLeftOf="@+id/searchButton"
+                android:layout_marginTop="8dp" android:layout_alignParentTop="true"/>
         <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tìm kiếm"
-            android:textColor="@android:color/white"
-            app:backgroundTint="#039BE5"
-            app:iconTint="#039BE5"
-            app:rippleColor="#039BE5"
-            app:strokeColor="#039BE5" />
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tìm kiếm"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#039BE5"
+                app:iconTint="#039BE5"
+                app:rippleColor="#039BE5"
+                app:strokeColor="#039BE5" android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp" android:layout_marginEnd="0dp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <!-- Hàng sự lựa chọn -->
     <TabHost
             android:id="@+id/tabhost"
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_marginTop="0dp"
-            android:layout_below="@+id/searchLayout" android:layout_marginBottom="-530dp"
-            android:layout_alignBottom="@+id/searchLayout">
+            android:layout_below="@+id/searchLayout" android:layout_marginBottom="0dp"
+            android:layout_above="@+id/bottomMenuLayout"
+            >
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -107,7 +111,40 @@
 <!--        android:layout_marginBottom="0dp"-->
 <!--        android:background="@color/bright_blue" />-->
 
-    <include layout="@layout/bottom_menu" android:id="@+id/bottomMenuLayout"/>
+    <LinearLayout
+            android:id="@+id/bottomMenuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp">
+        <ImageView
+                android:id="@+id/homeIcon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="Home"
+                android:padding="15dp"
+                android:src="@drawable/ic_home"/>
+
+        <ImageView
+                android:id="@+id/notificationIcon"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:contentDescription="Thông báo"
+                android:padding="15dp"
+                android:src="@drawable/ic_notification"/>
+
+        <ImageView
+                android:id="@+id/accountIcon"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:contentDescription="Quản lý tài khoản"
+                android:padding="15dp"
+                android:src="@drawable/ic_account"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

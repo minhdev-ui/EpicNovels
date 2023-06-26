@@ -114,10 +114,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess(User user) {
         Intent intent;
-        if(user.getRole().equals("USER")) {
-            intent = new Intent(this, DefaultActivity.class);
-        } else {
+        if(user.getRole().equals("ADMIN")) {
             intent = new Intent(this, AdminActivity.class);
+        } else {
+            intent = new Intent(this, DefaultActivity.class);
         }
         startActivity(intent);
         finish();

@@ -54,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (emailTask.isComplete()) {
                                     QuerySnapshot emailSnapshot = emailTask.getResult();
                                     if (emailSnapshot != null && !emailSnapshot.isEmpty()) {
+                                        loadingOverlay.setVisibility(View.GONE);
                                         Toast.makeText(RegisterActivity.this, "Email is already sign up!", Toast.LENGTH_SHORT).show();
                                         return;
                                     } else {
