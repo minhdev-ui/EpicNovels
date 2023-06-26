@@ -13,6 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".BlockedChannelsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChannelFollowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SavedContentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".GeneralSettingsActivity"
             android:exported="false" />
         <activity

@@ -47,33 +47,33 @@ public class ManagenActivity extends AppCompatActivity {
             }
         });
 
-//        btnChannelFollow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển đến trang theo dõi các kênh
-//                Intent intent = new Intent(ManagenActivity.this, ChannelFollowActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        btnSavedContent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển đến trang nội dung đã lưu
-//                Intent intent = new Intent(ManagenActivity.this, SavedContentActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        btnHistory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển đến trang lịch sử
-//                Intent intent = new Intent(ManagenActivity.this, HistoryActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
+        btnChannelFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển đến trang theo dõi các kênh
+                Intent intent = new Intent(ManagenActivity.this, ChannelFollowActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSavedContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển đến trang nội dung đã lưu
+                Intent intent = new Intent(ManagenActivity.this, SavedContentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển đến trang lịch sử
+                Intent intent = new Intent(ManagenActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnGeneralSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,15 +82,15 @@ public class ManagenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//
-//        btnBlockedChannels.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển đến trang các kênh đã chặn
-//                Intent intent = new Intent(ManagenActivity.this, BlockedChannelsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        btnBlockedChannels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển đến trang các kênh đã chặn
+                Intent intent = new Intent(ManagenActivity.this, BlockedChannelsActivity.class);
+                startActivity(intent);
+            }
+        });
         btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
