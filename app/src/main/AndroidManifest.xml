@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appepicnovels">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/hi"
@@ -12,19 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".GeneralSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ManagenActivity"
             android:exported="false"
             android:label="@string/title_activity_manage_account"
-            android:theme="@style/Theme.MyApplication" />
-        <!-- Khai báo DefaultActivity -->
+            android:theme="@style/Theme.MyApplication" /> <!-- Khai báo DefaultActivity -->
         <activity
             android:name=".DefaultActivity"
             android:exported="false"
             android:label="Default Activity" />
-
-        <activity
-            android:name=".DiscoverActivity"/>
-
+        <activity android:name=".DiscoverActivity" />
         <activity
             android:name=".InformationActivity"
             android:exported="false" />

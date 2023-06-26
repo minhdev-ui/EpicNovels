@@ -74,14 +74,14 @@ public class ManagenActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//        btnGeneralSettings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển đến trang cài đặt chung
-//                Intent intent = new Intent(ManagenActivity.this, GeneralSettingsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnGeneralSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển đến trang cài đặt chung
+                Intent intent = new Intent(ManagenActivity.this, GeneralSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //        btnBlockedChannels.setOnClickListener(new View.OnClickListener() {
 //            @Override
