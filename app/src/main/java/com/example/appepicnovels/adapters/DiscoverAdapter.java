@@ -1,10 +1,13 @@
 package com.example.appepicnovels.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -13,8 +16,8 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 
-import com.example.appepicnovels.DiscoverActivity;
 import com.example.appepicnovels.R;
+import com.example.appepicnovels.StoryDescription;
 import com.example.appepicnovels.models.Story;
 
 import java.util.ArrayList;

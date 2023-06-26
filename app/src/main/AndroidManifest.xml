@@ -37,7 +37,7 @@
         <activity
                 android:name=".DiscoverActivity"
         />
-
+        <activity android:name=".StoryDescription"/>
         <activity
                 android:name=".InformationActivity"
                 android:exported="false"/>

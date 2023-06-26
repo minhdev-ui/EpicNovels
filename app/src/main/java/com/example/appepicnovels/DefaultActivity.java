@@ -49,6 +49,12 @@ public class DefaultActivity extends AppCompatActivity {
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
 
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null) {
+            tabHost.setCurrentTab(extras.getInt("tabActive"));
+        }
+
         View manageAccount = findViewById(R.id.accountIcon);
         manageAccount.setOnClickListener(new View.OnClickListener() {
             @Override

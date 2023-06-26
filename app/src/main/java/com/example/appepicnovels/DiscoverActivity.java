@@ -1,8 +1,10 @@
 package com.example.appepicnovels;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -39,7 +41,6 @@ public class DiscoverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discover);
         progressBar = findViewById(R.id.loading_view);
         init();
-        setClick();
     }
 
     public void getAllStories(final StoriesCallback callback) {
@@ -68,7 +69,7 @@ public class DiscoverActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             QuerySnapshot queryDocument = task.getResult();
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                storyArrayList.add(new Story(documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img")));
+                                storyArrayList.add(new Story(documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
                             }
                             callback.onStoriesLoad(storyArrayList);
                         } else {
@@ -90,18 +91,26 @@ public class DiscoverActivity extends AppCompatActivity {
             @Override
             public void onStoriesLoad(ArrayList<Story> stories) {
                 for (Story story : stories) {
-                    DiscoverArrayList.add(new Story(story.getName(), story.getChap(), story.getLinkImg()));
+                    DiscoverArrayList.add(new Story(story.getName(), story.getChap(), story.getLinkImg(), story.getDescription(), story.getStatus()));
                 }
                 adapter = new DiscoverAdapter(DiscoverActivity.this, 0, DiscoverArrayList);
                 grvListStory.setAdapter(adapter);
+                grvListStory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Story currentStory = DiscoverArrayList.get(position);
+                        Story story = new Story(currentStory.getName(), currentStory.getChap(), currentStory.getLinkImg(), currentStory.getDescription(), currentStory.getStatus());
+                        Intent intent = new Intent(DiscoverActivity.this, StoryDescription.class);
+                        intent.putExtra("story", story);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
                 progressBar.setProgress(100);
                 progressBar.setVisibility(View.GONE);
                 grvListStory.setVisibility(View.VISIBLE);
             }
         });
-    }
-
-    private void setClick() {
     }
 
     ;
