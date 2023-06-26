@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,7 @@ public class StoryDescription extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         setContentView(R.layout.activity_story_description);
         ImageView backButton = findViewById(R.id.myIcon);
+        RelativeLayout viewListChapter = findViewById(R.id.viewListChapter);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +35,8 @@ public class StoryDescription extends AppCompatActivity {
             }
         });
 
+
+
         // Ánh xạ các thành phần giao diện từ file XML
 
          storyTitle = findViewById(R.id.storyTitle);
@@ -43,7 +47,17 @@ public class StoryDescription extends AppCompatActivity {
         if(bundle != null) {
             Story story = (Story) bundle.getSerializable("story");
             setDetail(story);
+            viewListChapter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(StoryDescription.this, ListChapterActivity.class);
+                    intent.putExtra("storyId", story.getId());
+                    intent.putExtra("nameStory", story.getName());
+                    startActivity(intent);
+                }
+            });
         }
+
         // Thiết lập dữ liệu cho các thành phần giao diện
     }
 

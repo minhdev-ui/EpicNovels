@@ -35,6 +35,7 @@
                 android:name=".DefaultActivity"
         />
         <activity android:name=".AdminActivity"/>
+        <activity android:name=".ListChapterActivity"/>
         <activity
                 android:name=".DiscoverActivity"
         />

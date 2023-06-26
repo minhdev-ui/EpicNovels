@@ -3,6 +3,7 @@ package com.example.appepicnovels.models;
 import java.io.Serializable;
 
 public class Story implements Serializable {
+    private String id;
     private String name;
     private String chap;
     private String linkImg;
@@ -11,12 +12,21 @@ public class Story implements Serializable {
 
     private String status;
 
-    public Story(String name, String chap, String linkImg, String description, String status) {
+    public Story(String id, String name, String chap, String linkImg, String description, String status) {
+        this.id = id;
         this.name= name;
         this.chap = chap;
         this.linkImg = linkImg;
         this.description= description;
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

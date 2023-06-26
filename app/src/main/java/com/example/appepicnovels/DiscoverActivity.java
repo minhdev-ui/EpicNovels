@@ -69,7 +69,7 @@ public class DiscoverActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             QuerySnapshot queryDocument = task.getResult();
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                storyArrayList.add(new Story(documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
                             }
                             callback.onStoriesLoad(storyArrayList);
                         } else {
@@ -91,7 +91,7 @@ public class DiscoverActivity extends AppCompatActivity {
             @Override
             public void onStoriesLoad(ArrayList<Story> stories) {
                 for (Story story : stories) {
-                    DiscoverArrayList.add(new Story(story.getName(), story.getChap(), story.getLinkImg(), story.getDescription(), story.getStatus()));
+                    DiscoverArrayList.add(new Story(story.getId(), story.getName(), story.getChap(), story.getLinkImg(), story.getDescription(), story.getStatus()));
                 }
                 adapter = new DiscoverAdapter(DiscoverActivity.this, 0, DiscoverArrayList);
                 grvListStory.setAdapter(adapter);
@@ -99,7 +99,7 @@ public class DiscoverActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Story currentStory = DiscoverArrayList.get(position);
-                        Story story = new Story(currentStory.getName(), currentStory.getChap(), currentStory.getLinkImg(), currentStory.getDescription(), currentStory.getStatus());
+                        Story story = new Story(currentStory.getId(), currentStory.getName(), currentStory.getChap(), currentStory.getLinkImg(), currentStory.getDescription(), currentStory.getStatus());
                         Intent intent = new Intent(DiscoverActivity.this, StoryDescription.class);
                         intent.putExtra("story", story);
                         startActivity(intent);

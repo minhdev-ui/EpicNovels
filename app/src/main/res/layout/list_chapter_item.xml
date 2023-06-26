@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chapter"
+                    android:id="@+id/nameChapter"
+            />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp" android:layout_marginStart="0dp"
+                    android:layout_alignLeft="@+id/nameChapter" android:layout_alignStart="@+id/nameChapter"
+                    android:layout_marginTop="0dp" android:layout_below="@+id/nameChapter"
+                    android:gravity="center"
+            >
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/eye"
+                        android:gravity="center"
+                />
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:text="Visit: "
+                        android:gravity="center"
+                />
+                <TextView
+                        android:id="@+id/amountView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:text="0"
+                        android:gravity="center"
+                />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
