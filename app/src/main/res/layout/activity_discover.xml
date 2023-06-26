@@ -9,9 +9,12 @@
         android:id="@+id/grvListStory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:horizontalSpacing="10dp"
         android:numColumns="3"
         android:verticalSpacing="10dp" />
+
+    <include layout="@layout/loading_progress_bar"/>
 
 
 </RelativeLayout>
