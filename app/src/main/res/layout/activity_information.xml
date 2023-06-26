@@ -94,8 +94,8 @@
 
                 <LinearLayout
                     android:id="@+id/Content"
-                    android:layout_width="398dp"
-                    android:layout_height="272dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="269dp"
                     android:orientation="vertical">
 
                     <TextView
