@@ -1,11 +1,9 @@
 package com.example.appepicnovels;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appepicnovels.adapters.ChapterAdapter;
@@ -15,6 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class ListChapterActivity extends AppCompatActivity {
@@ -68,6 +67,15 @@ public class ListChapterActivity extends AppCompatActivity {
                     }
                     chapterAdapter = new ChapterAdapter(ListChapterActivity.this, chapters);
                     listView.setAdapter(chapterAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(ListChapterActivity.this, ChapterActivity.class);
+                            intent.putExtra("chapters", chapters);
+                            intent.putExtra("pos", position);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });

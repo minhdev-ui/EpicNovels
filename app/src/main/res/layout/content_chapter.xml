@@ -1,78 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
     <RelativeLayout
             android:id="@+id/headerChapter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-    >
-     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/back"
-        android:paddingLeft="2dp"
-        android:id="@+id/back"
-        android:paddingRight="2dp"
-     />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chapter"
-            android:gravity="center"
-            android:textSize="20dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+    >
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back"
+                android:paddingLeft="2dp"
+                android:id="@+id/back"
+                android:paddingRight="2dp"
+        />
+        <TextView
+                android:id="@+id/nameChapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chapter"
+                android:gravity="center"
+                android:textSize="20dp"
         />
     </RelativeLayout>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_above="@+id/bottomChapter" android:layout_marginBottom="0dp" android:layout_marginTop="0dp"
-            android:layout_below="@+id/headerChapter"/>
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottomChapter" android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_below="@+id/headerChapter"
+                android:orientation="vertical"
+    >
+        <TextView
+                android:id="@+id/contentChapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="content"
+                android:padding="10dp"
+        />
+    </ScrollView>
 
     <RelativeLayout
             android:id="@+id/bottomChapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_alignParentBottom="true" android:layout_marginBottom="0dp">
         <ImageButton
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/back"
                 android:id="@+id/backChapter"
-                android:layout_alignParentStart="true" android:layout_marginLeft="25dp" android:layout_marginStart="25dp"
-                android:layout_alignParentLeft="true"/>
+                android:backgroundTint="#03A9F4"
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_alignParentLeft="true" android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"/>
         <LinearLayout
                 android:layout_toStartOf="@+id/nextChapter" android:layout_toLeftOf="@+id/nextChapter"
                 android:layout_toEndOf="@+id/backChapter" android:layout_toRightOf="@+id/backChapter"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp" android:layout_alignParentTop="true"
+                android:id="@+id/btnChapter"
         >
 
             <Button
+                    android:id="@+id/btnNameChapter"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:text="Chapter"
                     android:paddingLeft="40dp"
                     android:paddingRight="40dp"
             />
         </LinearLayout>
         <ImageButton
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/back"
                 android:rotation="180"
                 android:id="@+id/nextChapter"
+                android:backgroundTint="#03A9F4"
+                android:background="@drawable/round_background"
                 android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
-                android:layout_marginRight="25dp" android:layout_marginEnd="25dp"/>
+                android:layout_marginRight="25dp" android:layout_marginEnd="25dp" android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"/>
     </RelativeLayout>
 </RelativeLayout>

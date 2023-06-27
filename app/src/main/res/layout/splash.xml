@@ -28,13 +28,13 @@
     <Button
             android:id="@+id/login_button"
             android:layout_width="233dp"
-            android:layout_height="71dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/logo_image"
             android:layout_alignStart="@+id/logo_image"
             android:layout_alignLeft="@+id/logo_image"
-            android:layout_marginStart="-14dp"
-            android:layout_marginLeft="-14dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginStart="-11dp"
+            android:layout_marginLeft="-11dp"
+            android:layout_marginTop="41dp"
             android:bottomRightRadius="10dp"
             android:bottomLeftRadius="10dp"
             android:topLeftRadius="10dp"
@@ -43,11 +43,12 @@
             android:background="#039BE5"
             android:text="Login"
             android:textSize="20sp"
+            android:typeface="monospace"
             app:backgroundTint="#039BE5"/>
     <Button
             android:id="@+id/signIn_button"
             android:layout_width="233dp"
-            android:layout_height="71dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/logo_image"
             android:layout_marginTop="120dp"
             android:background="#039BE5"
@@ -57,6 +58,7 @@
             android:bottomLeftRadius="10dp"
             android:topLeftRadius="10dp"
             android:topRightRadius="10dp"
+            android:typeface="monospace"
             app:backgroundTint="#039BE5" android:layout_marginLeft="0dp" android:layout_marginStart="0dp"
             android:layout_alignLeft="@+id/login_button" android:layout_alignStart="@+id/login_button"/>
 

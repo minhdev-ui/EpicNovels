@@ -61,6 +61,17 @@ public class DefaultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DefaultActivity.this, ManagenActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        View notification = findViewById(R.id.notificationIcon);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DefaultActivity.this, NotificationActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

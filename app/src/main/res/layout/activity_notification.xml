@@ -26,13 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/titleNofi"
+        android:layout_above="@+id/bottom"
         android:layout_marginTop="0dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/nofication"
             android:layout_width="match_parent"
-            android:layout_height="841dp"
+            android:layout_height="match_parent"
             android:background="#E4E0E0"
             android:gravity="center"
             android:shadowColor="#FFFFFF"
