@@ -128,14 +128,14 @@ public class StoryDescription extends AppCompatActivity {
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    ArrayList<Rating> oldRating = (ArrayList<Rating>) documentSnapshot.get("ratingStar");
+                    ArrayList<Rating> ratingStarObj = (ArrayList<Rating>) documentSnapshot.get("ratingStar");
                     try {
                         Rating ratingStar = new Rating(userId, story.getId(), star);
-                        oldRating.add(ratingStar);
+                        ratingStarObj.add(ratingStar);
                         query.update(
                                 "ratingStar",
-                                oldRating
-                                );
+                                ratingStarObj
+                        );
                     } catch (Exception e) {
                         Log.e("error", e.getMessage());
                     }
