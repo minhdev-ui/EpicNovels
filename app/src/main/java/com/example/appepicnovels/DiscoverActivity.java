@@ -1,10 +1,14 @@
 package com.example.appepicnovels;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -34,13 +38,50 @@ public class DiscoverActivity extends AppCompatActivity {
     private static final int DEBOUNCE_DELAY = 1000;
 
     long updateIntervalInMillis = (long) DEBOUNCE_DELAY / 90;
+    private EditText searchEditText;
+
+    private Button searchButton;
+
+    private String search = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_discover);
+        setContentView(R.layout.default_layout);
         progressBar = findViewById(R.id.loading_view);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         init();
+        searchEditText = findViewById(R.id.searchEditText);
+        searchButton = findViewById(R.id.searchButton);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search = searchEditText.getText().toString();
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                init();
+            }
+        });
+
+        View manageAccount = findViewById(R.id.accountIcon);
+        manageAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DiscoverActivity.this, ManagenActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        View notification = findViewById(R.id.notificationIcon);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DiscoverActivity.this, NotificationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void getAllStories(final StoriesCallback callback) {
@@ -69,7 +110,13 @@ public class DiscoverActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             QuerySnapshot queryDocument = task.getResult();
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                if(search == "") {
+                                    storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                } else {
+                                    if (documentSnapshot.get("name").toString().toLowerCase().contains(search)) {
+                                        storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                    }
+                                }
                             }
                             callback.onStoriesLoad(storyArrayList);
                         } else {

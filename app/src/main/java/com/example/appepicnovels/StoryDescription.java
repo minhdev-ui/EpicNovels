@@ -23,7 +23,6 @@ import com.example.appepicnovels.models.Comment;
 import com.example.appepicnovels.models.Rating;
 import com.example.appepicnovels.models.Story;
 import com.example.appepicnovels.services.CommentService;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

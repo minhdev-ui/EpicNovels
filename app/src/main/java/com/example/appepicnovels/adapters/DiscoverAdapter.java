@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 
+import com.example.appepicnovels.DiscoverActivity;
 import com.example.appepicnovels.R;
 import com.example.appepicnovels.StoryDescription;
 import com.example.appepicnovels.models.Story;

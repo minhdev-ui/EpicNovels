@@ -2,6 +2,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+    android:orientation="vertical"
 >
 
     <!-- Thanh tìm kiếm -->
@@ -18,11 +19,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Nhập tên nội dung, kênh..."
+                android:hint="Nhập tên truyện...."
                 android:gravity="center"
                 android:inputType="text" android:layout_toStartOf="@+id/searchButton" android:layout_marginRight="83dp"
                 android:layout_marginEnd="83dp" android:layout_toLeftOf="@+id/searchButton"
-                android:layout_marginTop="8dp" android:layout_alignParentTop="true"/>
+                android:layout_marginTop="8dp" android:layout_alignParentTop="true" />
         <Button
                 android:id="@+id/searchButton"
                 android:layout_width="wrap_content"
@@ -33,48 +34,28 @@
                 app:iconTint="#039BE5"
                 app:rippleColor="#039BE5"
                 app:strokeColor="#039BE5" android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
-                android:layout_marginRight="0dp" android:layout_marginEnd="0dp"/>
-
+                android:layout_marginRight="0dp" android:layout_marginEnd="0dp" />
     </RelativeLayout>
 
     <!-- Hàng sự lựa chọn -->
-    <TabHost
-            android:id="@+id/tabhost"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_marginTop="0dp"
-            android:layout_below="@+id/searchLayout" android:layout_marginBottom="0dp"
-            android:layout_above="@+id/bottomMenuLayout"
-            >
+    <GridView
+        android:id="@+id/grvListStory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomMenuLayout"
+        android:layout_below="@+id/searchLayout"
+        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="-55dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp" />
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            <!-- Tab widget to select the tab -->
-            <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/round_background"
-            />
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="2dp"
-                android:background="@color/black"
-            />
-
-            <!-- FrameLayout which contains the data of the activity -->
-            <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-            >
-
-
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+    <include layout="@layout/loading_progress_bar"/>
     <!-- Nội dung chính -->
 
     <!-- Thanh menu ngang ở dưới đáy màn hình -->
@@ -120,6 +101,5 @@
                 android:padding="15dp"
                 android:src="@drawable/ic_account"/>
     </LinearLayout>
-
 
 </RelativeLayout>

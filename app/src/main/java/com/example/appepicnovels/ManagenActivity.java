@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,7 @@ public class ManagenActivity extends AppCompatActivity {
         btnContact = findViewById(R.id.btnContact);
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnLogout = findViewById(R.id.btnLogout);
+        ImageView notificationIcon = findViewById(R.id.notificationIcon);
 
         btnInfor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,13 @@ public class ManagenActivity extends AppCompatActivity {
             }
         });
 
+        notificationIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagenActivity.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
         btnChannelFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

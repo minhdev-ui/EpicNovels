@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface StoriesCallback {
     void onStoriesLoad(ArrayList<Story> stories);
+
 }
