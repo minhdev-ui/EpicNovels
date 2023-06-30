@@ -2,7 +2,9 @@ package com.example.appepicnovels;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -41,9 +43,21 @@ public class SplashActivity extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                // Start the main activity or perform other actions
-                                btn_login.setVisibility(View.VISIBLE);
-                                btn_signIn.setVisibility(View.VISIBLE);
+                                SharedPreferences sharedPreferences = getSharedPreferences("AccountPreference", Context.MODE_PRIVATE);
+                                if(sharedPreferences.getString("id", null) != null) {
+                                    Intent intent;
+                                    if(sharedPreferences.getString("role", null).equals("ADMIN")) {
+                                        intent = new Intent(SplashActivity.this, AdminActivity.class);
+                                    } else {
+                                        intent = new Intent(SplashActivity.this, DefaultActivity.class);
+                                    }
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // Start the main activity or perform other actions
+                                    btn_login.setVisibility(View.VISIBLE);
+                                    btn_signIn.setVisibility(View.VISIBLE);
+                                }
                             }
                         }, SPLASH_DURATION);
                     }

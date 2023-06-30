@@ -103,7 +103,6 @@ public class DiscoverActivity extends AppCompatActivity {
                         Intent intent = new Intent(DiscoverActivity.this, StoryDescription.class);
                         intent.putExtra("story", story);
                         startActivity(intent);
-                        finish();
                     }
                 });
                 progressBar.setProgress(100);

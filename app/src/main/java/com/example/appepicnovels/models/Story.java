@@ -1,12 +1,14 @@
 package com.example.appepicnovels.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Story implements Serializable {
     private String id;
     private String name;
     private String chap;
     private String linkImg;
+    private ArrayList<?> ratingStar;
 
     private String description;
 
@@ -19,6 +21,14 @@ public class Story implements Serializable {
         this.linkImg = linkImg;
         this.description= description;
         this.status = status;
+    }
+
+    public ArrayList<?> getRatingStar() {
+        return ratingStar;
+    }
+
+    public void setRatingStar(ArrayList<?> ratingStar) {
+        this.ratingStar = ratingStar;
     }
 
     public String getId() {

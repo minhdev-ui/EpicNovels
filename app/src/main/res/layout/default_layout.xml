@@ -55,48 +55,23 @@
             <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="1dp"
+                    android:background="@drawable/round_background"
+            />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="2dp"
+                android:background="@color/black"
+            />
 
             <!-- FrameLayout which contains the data of the activity -->
             <FrameLayout
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                <!-- for tab 1 -->
-                <LinearLayout
-                        android:id="@+id/tab1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                    <!-- Text View for applying the text to the tab -->
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Coming Soon"
-                            android:textColor="#000"
-                            android:layout_gravity="center"
-                            android:textSize="24sp"/>
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+            >
 
 
-                <!-- for tab 3 -->
-                <LinearLayout
-                        android:id="@+id/tab3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                    <!-- Text View for applying the text to the tab -->
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Coming Soon"
-                            android:textColor="#000"
-                            android:layout_gravity="center"
-                            android:textSize="24sp"/>
-                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>

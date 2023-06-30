@@ -45,7 +45,7 @@ public class ListChapterActivity extends AppCompatActivity {
     public void getAllChaptersByStoryId(String id) {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         CollectionReference chapterCollection = firebaseFirestore.collection("Chapters");
-        Query query = chapterCollection.whereEqualTo("storyId", id);
+        Query query = chapterCollection.whereEqualTo("storyId", id.trim());
 
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override

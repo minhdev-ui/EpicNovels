@@ -1,7 +1,9 @@
 package com.example.appepicnovels;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     String hashedPassword = documentSnapshot.getString("password");
 
                     if (BCrypt.checkpw(password, hashedPassword)) {
-                        User user = new User(username, hashedPassword, null, documentSnapshot.get("role").toString());
+                        User user = new User(documentSnapshot.getId(), username, hashedPassword, null, documentSnapshot.get("role").toString());
                         // Gọi phương thức thành công đăng nhập từ View
                         if (LoginActivity.this != null) {
                             Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
@@ -113,6 +115,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(User user) {
+        SharedPreferences sharedPreferences = getSharedPreferences("AccountPreference", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", user.getId());
+        editor.putString("username", user.getUsername());
+        editor.putString("email", user.getEmail());
+        editor.putString("role", user.getRole());
+        editor.apply();
         Intent intent;
         if(user.getRole().equals("ADMIN")) {
             intent = new Intent(this, AdminActivity.class);

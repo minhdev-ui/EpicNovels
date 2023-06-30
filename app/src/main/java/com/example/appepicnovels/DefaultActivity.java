@@ -32,22 +32,14 @@ public class DefaultActivity extends AppCompatActivity {
         TabHost tabHost = (TabHost)findViewById(R.id.tabhost);
         tabHost.setup(activityManager);
 
-        TabHost.TabSpec tab1 = tabHost.newTabSpec("For You");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Discover");
-        TabHost.TabSpec tab3 = tabHost.newTabSpec("Posts");
 
-        tab1.setIndicator("For You");
-        tab1.setContent(R.id.tab1);
 
-        tab2.setIndicator("Discover");
+        tab2.setIndicator("");
         tab2.setContent(new Intent(this, DiscoverActivity.class));
 
-        tab3.setIndicator("Posts");
-        tab3.setContent(R.id.tab3);
 
-        tabHost.addTab(tab1);
         tabHost.addTab(tab2);
-        tabHost.addTab(tab3);
 
         Bundle extras = getIntent().getExtras();
 

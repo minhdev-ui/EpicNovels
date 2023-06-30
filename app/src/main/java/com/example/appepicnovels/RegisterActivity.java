@@ -59,7 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         return;
                                     } else {
                                         String hashPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
-                                        Task<DocumentReference> insertQuery = usersCollection.add(new User(username, hashPassword, email, "USER"));
+                                        DocumentSnapshot documentSnapshot = emailTask.getResult().getDocuments().get(0);
+                                        Task<DocumentReference> insertQuery = usersCollection.add(new User(documentSnapshot.getId(), username, hashPassword, email, "USER"));
                                         insertQuery.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {

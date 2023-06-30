@@ -1,6 +1,7 @@
 package com.example.appepicnovels.models;
 
 public class User {
+    private String id;
     private String username;
     private String password;
     private String email;
@@ -22,11 +23,20 @@ public class User {
         this.email = email;
     }
 
-    public User(String username, String password, String email, String role) {
+    public User(String id, String username, String password, String email, String role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     // Getters và setters

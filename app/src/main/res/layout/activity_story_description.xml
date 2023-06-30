@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
@@ -61,8 +61,10 @@
 
         </RelativeLayout>
     <ScrollView
+            android:layout_below="@+id/authorLayout"
+            android:layout_above="@+id/commentPost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
             <!-- Tên truyện -->
@@ -146,7 +148,7 @@
             android:orientation="horizontal"
             android:background="@color/teal_200"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="8dp"
             >
 
             <ImageView
@@ -170,48 +172,77 @@
                 android:textColor="@color/black" />
         </RelativeLayout>
 
-            <SeekBar
-                android:id="@+id/chapterSeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:padding="16dp" />
-
-            <ImageView
-                    android:id="@+id/storyImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/danhmonchiai" />
-
-            <!-- Đánh giá và bình luận -->
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp" />
 
             <!-- Đánh giá -->
             <RatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center"
+                    android:paddingBottom="20dp"
+            />
 
-            <!-- Bình luận -->
-            <EditText
-                    android:id="@+id/commentEditText"
+
+            <ImageView
+                    android:id="@+id/storyImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Viết bình luận..."
-                    android:maxLines="5" />
+                    android:background="@drawable/danhmonchiai"/>
 
-            <Button
-                    android:id="@+id/postCommentButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Đăng bình luận" />
+
+                <TextView
+                        android:layout_above="@+id/commentList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COMMENTS"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginTop="100dp"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            >
+                <ListView
+                        android:id="@+id/commentList"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                />
+                />
+            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <!-- Bình luận -->
+    <RelativeLayout
+            android:id="@+id/commentPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="0dp">
+
+        <EditText
+                android:id="@+id/commentEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Viết bình luận..."
+                android:maxLines="5" android:layout_toStartOf="@+id/postCommentButton"
+                android:layout_toLeftOf="@+id/postCommentButton"
+        />
+        <ImageButton
+                android:id="@+id/postCommentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sent"
+                android:background="@android:color/transparent"
+                android:text="Đăng bình luận" android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</RelativeLayout>
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+>
+    <RelativeLayout
+            android:id="@+id/commentItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center"
+    >
+        <LinearLayout
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+            <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_account"
+                    android:background="@android:color/transparent"
+            />
+            <LinearLayout
+                    android:id="@+id/account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginHorizontal="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="0dp"
+            >
+                <TextView
+                        android:id="@+id/nameAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                />
+                <TextView
+                        android:id="@+id/content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comment 1"
+                />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/timeComment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="1 day ago"
+                android:gravity="right"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
