@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appepicnovels.adapters.DiscoverAdapter;
 import com.example.appepicnovels.interfaces.StoriesCallback;
+import com.example.appepicnovels.models.Rating;
 import com.example.appepicnovels.models.Story;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiscoverActivity extends AppCompatActivity {
     GridView grvListStory;
@@ -110,11 +112,31 @@ public class DiscoverActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             QuerySnapshot queryDocument = task.getResult();
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                if(search == "") {
-                                    storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                if(search.trim() == "") {
+                                    storyArrayList.add(
+                                            new Story(
+                                            documentSnapshot.getId(),
+                                            documentSnapshot.getString("name"),
+                                            documentSnapshot.getString("lastestChap"),
+                                            documentSnapshot.getString("img"),
+                                            documentSnapshot.getString("description"),
+                                            documentSnapshot.getString("status"),
+                                            (List<Rating>) documentSnapshot.get("ratingStar"),
+                                            documentSnapshot.getDouble("totalRate")
+                                    ));
                                 } else {
                                     if (documentSnapshot.get("name").toString().toLowerCase().contains(search)) {
-                                        storyArrayList.add(new Story(documentSnapshot.getId(), documentSnapshot.getString("name"), documentSnapshot.getString("lastestChap"), documentSnapshot.getString("img"), documentSnapshot.getString("description"), documentSnapshot.getString("status")));
+                                        storyArrayList.add(
+                                                new Story(
+                                                        documentSnapshot.getId(),
+                                                        documentSnapshot.getString("name"),
+                                                        documentSnapshot.getString("lastestChap"),
+                                                        documentSnapshot.getString("img"),
+                                                        documentSnapshot.getString("description"),
+                                                        documentSnapshot.getString("status"),
+                                                        (List<Rating>) documentSnapshot.get("ratingStar"),
+                                                        documentSnapshot.getDouble("totalRate")
+                                                ));
                                     }
                                 }
                             }
@@ -138,7 +160,7 @@ public class DiscoverActivity extends AppCompatActivity {
             @Override
             public void onStoriesLoad(ArrayList<Story> stories) {
                 for (Story story : stories) {
-                    DiscoverArrayList.add(new Story(story.getId(), story.getName(), story.getChap(), story.getLinkImg(), story.getDescription(), story.getStatus()));
+                    DiscoverArrayList.add(new Story(story.getId(), story.getName(), story.getChap(), story.getLinkImg(), story.getDescription(), story.getStatus(), story.getRatingStar(), story.getTotalRate()));
                 }
                 adapter = new DiscoverAdapter(DiscoverActivity.this, 0, DiscoverArrayList);
                 grvListStory.setAdapter(adapter);
@@ -146,7 +168,7 @@ public class DiscoverActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Story currentStory = DiscoverArrayList.get(position);
-                        Story story = new Story(currentStory.getId(), currentStory.getName(), currentStory.getChap(), currentStory.getLinkImg(), currentStory.getDescription(), currentStory.getStatus());
+                        Story story = new Story(currentStory.getId(), currentStory.getName(), currentStory.getChap(), currentStory.getLinkImg(), currentStory.getDescription(), currentStory.getStatus(), currentStory.getRatingStar(), currentStory.getTotalRate());
                         Intent intent = new Intent(DiscoverActivity.this, StoryDescription.class);
                         intent.putExtra("story", story);
                         startActivity(intent);

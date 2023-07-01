@@ -2,32 +2,44 @@ package com.example.appepicnovels.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Story implements Serializable {
     private String id;
     private String name;
     private String chap;
     private String linkImg;
-    private ArrayList<?> ratingStar;
+    private List<Rating> ratingStar;
 
     private String description;
 
     private String status;
+    private Double totalRate;
 
-    public Story(String id, String name, String chap, String linkImg, String description, String status) {
+    public Story(String id, String name, String chap, String linkImg, String description, String status, List<Rating> ratingStar, Double totalRate) {
         this.id = id;
         this.name= name;
         this.chap = chap;
         this.linkImg = linkImg;
         this.description= description;
         this.status = status;
+        this.ratingStar = ratingStar;
+        this.totalRate = totalRate;
     }
 
-    public ArrayList<?> getRatingStar() {
+    public Double getTotalRate() {
+        return totalRate;
+    }
+
+    public void setTotalRate(Double totalRate) {
+        this.totalRate = totalRate;
+    }
+
+    public List<Rating> getRatingStar() {
         return ratingStar;
     }
 
-    public void setRatingStar(ArrayList<?> ratingStar) {
+    public void setRatingStar(List<Rating> ratingStar) {
         this.ratingStar = ratingStar;
     }
 

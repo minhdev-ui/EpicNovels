@@ -10,6 +10,8 @@
     <color name="bright_color">#FF00FF</color>
     <color name="dark_color">#000000</color>
     <color name="bright_blue">#039BE5</color>
+    <color name="lightGrey">#D3D3D3</color>
+    <color name="duskYellow">#E8B319</color>
 
 
 </resources>

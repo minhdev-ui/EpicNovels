@@ -3,6 +3,9 @@ package com.example.appepicnovels;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,19 +13,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.example.appepicnovels.Firebase.FirebaseStore;
-import com.example.appepicnovels.adapters.ChapterAdapter;
 import com.example.appepicnovels.adapters.CommentAdapter;
 import com.example.appepicnovels.interfaces.CommentsCallback;
-import com.example.appepicnovels.models.Chapter;
 import com.example.appepicnovels.models.Comment;
 import com.example.appepicnovels.models.Rating;
 import com.example.appepicnovels.models.Story;
-import com.example.appepicnovels.services.CommentService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -42,6 +38,8 @@ public class StoryDescription extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     ImageButton postCommentButton;
     EditText commentInput;
+    RatingBar ratingBar;
+    TextView totalRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +63,19 @@ public class StoryDescription extends AppCompatActivity {
 
         // Ánh xạ các thành phần giao diện từ file XML
 
-         storyTitle = findViewById(R.id.storyTitle);
-         storyDescription = findViewById(R.id.storyDescription);
-         storyStatus = findViewById(R.id.Status);
-         storyImage = findViewById(R.id.storyImage);
-         postCommentButton = findViewById(R.id.postCommentButton);
-         commentInput = findViewById(R.id.commentEditText);
-         RatingBar ratingBar = findViewById(R.id.ratingBar);
+        storyTitle = findViewById(R.id.storyTitle);
+        storyDescription = findViewById(R.id.storyDescription);
+        storyStatus = findViewById(R.id.Status);
+        storyImage = findViewById(R.id.storyImage);
+        postCommentButton = findViewById(R.id.postCommentButton);
+        commentInput = findViewById(R.id.commentEditText);
+        ratingBar = findViewById(R.id.ratingBar);
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#E8B319"), PorterDuff.Mode.SRC_ATOP);
+        totalRate = findViewById(R.id.totalRating);
         SharedPreferences sharedPreferences = getSharedPreferences("AccountPreference", MODE_PRIVATE);
         String userId = sharedPreferences.getString("id", "");
-        if(bundle != null) {
+        if (bundle != null) {
             Story story = (Story) bundle.getSerializable("story");
             init(story.getId());
             setDetail(story);
@@ -101,15 +102,14 @@ public class StoryDescription extends AppCompatActivity {
                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                     try {
                         addRatingToStory(story, rating, userId);
-                        Toast.makeText(StoryDescription.this, "Rating Success", Toast.LENGTH_SHORT).show();
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         Toast.makeText(StoryDescription.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
         View view = getCurrentFocus();
-        if(view != null) {
+        if (view != null) {
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
     }
@@ -118,7 +118,27 @@ public class StoryDescription extends AppCompatActivity {
         storyTitle.setText(story.getName());
         storyDescription.setText(story.getDescription());
         storyStatus.setText(story.getStatus());
+        ratingBar.setRating(Float.parseFloat(story.getTotalRate().toString()));
+        totalRate.setText("( xếp hạng: " + ratingBar.getRating() + "/5.0 - " + story.getRatingStar().size() + " Lượt đánh giá )");
         Glide.with(this).load(story.getLinkImg()).into(storyImage);
+    }
+
+    public void addRatingStar(Rating rating) {
+        CollectionReference collectionReference = firebaseFirestore.collection("Rates");
+        Task<DocumentReference> insertTask = collectionReference.add(rating);
+        insertTask.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
+                if(task.isSuccessful()) {
+                    Log.e("info", task.getResult().getId());
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Log.e("error", e.getMessage());
+            }
+        });
     }
 
     public void addRatingToStory(Story story, float star, String userId) {
@@ -126,19 +146,82 @@ public class StoryDescription extends AppCompatActivity {
         query.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    ArrayList<Rating> ratingStarObj = (ArrayList<Rating>) documentSnapshot.get("ratingStar");
-                    try {
-                        Rating ratingStar = new Rating(userId, story.getId(), star);
-                        ratingStarObj.add(ratingStar);
-                        query.update(
-                                "ratingStar",
-                                ratingStarObj
-                        );
-                    } catch (Exception e) {
-                        Log.e("error", e.getMessage());
-                    }
+
+                    ArrayList<Rating> oldRating = (ArrayList<Rating>) documentSnapshot.getData().get("ratingStar");
+                    float lastTotalRate = documentSnapshot.getDouble("totalRate").floatValue();
+                    CollectionReference collectionReference = firebaseFirestore.collection("Rates");
+                    collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()) {
+                                QuerySnapshot documentSnapshot = task.getResult();
+                                if(!documentSnapshot.isEmpty()) {
+                                    for(QueryDocumentSnapshot queryDocumentSnapshot : documentSnapshot) {
+                                        if(queryDocumentSnapshot.getString("userId").equals(userId.trim()) && queryDocumentSnapshot.getString("storyId").equals(story.getId().trim())) {
+                                            Toast.makeText(StoryDescription.this, "Bạn đã đánh giá truyện này rồi!", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                    }
+                                    try {
+                                        Rating newRating = new Rating(userId, story.getId(), star);
+                                        oldRating.add(newRating);
+                                        addRatingStar(newRating);
+                                        Map<String, Object> updates = new HashMap<>();
+                                        updates.put("ratingStar", oldRating);
+                                        updates.put("totalRate", (lastTotalRate + star)/oldRating.size());
+
+                                        query.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                                if(task.isSuccessful()) {
+                                                    Toast.makeText(StoryDescription.this, "Đánh giá thành công!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull @NotNull Exception e) {
+                                                Log.e("error", e.getMessage());
+                                            }
+                                        });
+                                    } catch (Exception e) {
+                                        Log.e("error", e.getMessage());
+                                    }
+                                } else {
+                                    try {
+                                        Rating newRating = new Rating(userId, story.getId(), star);
+                                        addRatingStar(newRating);
+                                        oldRating.add(newRating);
+                                        query.update("ratingStar", oldRating);
+                                        query.update("totalRate", lastTotalRate/oldRating.size());
+                                        Toast.makeText(StoryDescription.this, "Đánh giá thành công!", Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Log.e("error", e.getMessage());
+                                    }
+                                }
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            Log.e("error", e.getMessage());
+                        }
+                    });
+//                    if(!checkRatingStar(story.getId(), userId)) {
+//                        try {
+//                            Rating newRating = new Rating(userId, story.getId(), star);
+//                            oldRating.add(newRating);
+//                            query.update("ratingStar", oldRating);
+//                            query.update("totalRate", lastTotalRate/oldRating.size());
+//                            Toast.makeText(StoryDescription.this, "Đánh giá thành công!", Toast.LENGTH_SHORT).show();
+//                        } catch (Exception e) {
+//                            Log.e("error", e.getMessage());
+//                        }
+//                    }
+//                    else {
+//                        Toast.makeText(StoryDescription.this, "Bạn đã đánh giá truyện này rồi!", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -160,7 +243,7 @@ public class StoryDescription extends AppCompatActivity {
         insertComment.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     init(comment.getStoryId());
                 }
             }

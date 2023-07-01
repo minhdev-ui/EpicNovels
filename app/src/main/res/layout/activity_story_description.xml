@@ -174,16 +174,26 @@
 
 
             <!-- Đánh giá -->
-            <RatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="8dp"
-                    android:gravity="center"
-                    android:paddingBottom="20dp"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+            >
+                <TextView android:id="@+id/totalRating"
+                          android:layout_width="wrap_content"
+                          android:layout_height="fill_parent"
+                          android:text="(5.0 / 100 Rating)"
+                          android:gravity="center"
+                />
+                <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="start"
+                />
+            </LinearLayout>
 
 
             <ImageView
